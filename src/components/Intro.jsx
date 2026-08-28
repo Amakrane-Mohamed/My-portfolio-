@@ -50,7 +50,7 @@ export default function Intro({ ready = true }) {
       gsap.fromTo(
         '.pill',
         { y: 10, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.05, duration: 0.55, delay: 0.2, ease: 'expo.out' },
+        { y: 0, opacity: 1, stagger: 0.05, duration: 0.55, delay: 0.12, ease: 'expo.out' },
       )
     },
     { scope: ref, dependencies: [ready] },

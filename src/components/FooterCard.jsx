@@ -34,7 +34,8 @@ export default function FooterCard() {
 
   return (
     <footer className="card foot" id="contact">
-      <p className="foot-title">Contact</p>
+      <p className="foot-title">Let's talk</p>
+      <p className="foot-lead">A role, a product, or a hello. I read every message.</p>
       <div className="contact-actions">
         <a className="contact-call" href={`tel:${PROFILE.phone}`}>
           <span className="contact-action-icon" aria-hidden>
@@ -102,7 +103,7 @@ export default function FooterCard() {
             <textarea
               name="message"
               rows={5}
-              placeholder="Say hello"
+              placeholder="A role, a product, or a hello"
               required
               value={message}
               onChange={(event) => setMessage(event.target.value)}

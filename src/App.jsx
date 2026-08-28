@@ -6,6 +6,7 @@ import Tweet from './components/Tweet'
 import Life from './components/Life'
 import Logos from './components/Logos'
 import Build from './components/Build'
+import Cta from './components/Cta'
 import Experience from './components/Experience'
 import WorkList from './components/WorkList'
 import FooterCard from './components/FooterCard'
@@ -22,8 +23,10 @@ export default function App() {
   const [theme, setTheme] = useState(() => readTheme())
   const [boot, setBoot] = useState(true)
   const [cover, setCover] = useState(true)
+  const [dock, setDock] = useState(false)
   const root = useRef(null)
   const lock = useRef(false)
+  const dockTick = useRef(() => {})
   const endBoot = useCallback(() => setBoot(false), [])
   const endCover = useCallback(() => setCover(false), [])
 
@@ -50,6 +53,34 @@ export default function App() {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    if (boot || cover || app) {
+      setDock(false)
+      return
+    }
+
+    const contact = document.getElementById('contact')
+    if (!contact) return
+
+    const update = () => {
+      if (lock.current) return
+      const pastIntro = window.scrollY > 140
+      const contactTop = contact.getBoundingClientRect().top
+      const atContact = contactTop < window.innerHeight - 88
+      setDock(pastIntro && !atContact)
+    }
+
+    update()
+    dockTick.current = update
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      dockTick.current = () => {}
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
+  }, [boot, cover, app])
+
   useGSAP(
     () => {
       const bits = '.nav, .intro, .tweet, .logos, .work, .experience, .build, .life, .foot'
@@ -67,20 +98,22 @@ export default function App() {
       gsap.to('.work', { y: 0, opacity: 1, duration: 0.75, delay: 0.16, ease: 'expo.out' })
       gsap.to('.experience', { y: 0, opacity: 1, duration: 0.75, delay: 0.2, ease: 'expo.out' })
       gsap.to('.build', { y: 0, opacity: 1, duration: 0.7, delay: 0.24, ease: 'expo.out' })
-      gsap.to('.tweet', { y: 0, opacity: 1, duration: 0.7, delay: 0.28, ease: 'expo.out' })
-      gsap.to('.life', { y: 0, opacity: 1, duration: 0.7, delay: 0.31, ease: 'expo.out' })
-      gsap.to('.foot', { y: 0, opacity: 1, duration: 0.65, delay: 0.34, ease: 'expo.out' })
+      gsap.to('.life', { y: 0, opacity: 1, duration: 0.7, delay: 0.27, ease: 'expo.out' })
+      gsap.to('.tweet', { y: 0, opacity: 1, duration: 0.7, delay: 0.34, ease: 'expo.out' })
+      gsap.to('.foot', { y: 0, opacity: 1, duration: 0.65, delay: 0.37, ease: 'expo.out' })
     },
     { scope: root, dependencies: [boot] },
   )
 
   function onTab(id) {
     setTab(id)
+    if (id === 'contact') setDock(false)
     const node = document.getElementById(id)
     if (!node) return
     lock.current = true
     window.setTimeout(() => {
       lock.current = false
+      dockTick.current()
     }, 900)
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) {
@@ -110,10 +143,11 @@ export default function App() {
         <WorkList onOpen={setApp} />
         <Experience />
         <Build />
-        <Tweet />
         <Life ready={!boot} />
+        <Tweet />
         <FooterCard />
       </div>
+      <Cta open={dock} onContact={() => onTab('contact')} />
       <ProjectDetail app={app} onClose={() => setApp(null)} />
     </div>
   )

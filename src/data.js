@@ -58,12 +58,13 @@ export const APPS = [
     category: 'Finance',
     tagline: 'Personalized tech analysis.',
     summary:
-      'My first pro app that went to market. 🚀 I’ll never forget it. Snap a chart, get the read. Built for ABD Corp.',
+      'Live on the App Store. Snap a chart, get the analysis. Built for ABD Corp.',
     tint: 'linear-gradient(160deg, #f5f5f5 0%, #2a2a2a 48%, #0a0a0a 100%)',
     rating: '5.0',
     year: '2025',
     platform: 'iOS',
     client: 'ABD Corp',
+    stack: ['Flutter', 'Node.js'],
     store: 'https://apps.apple.com/us/app/chart-ai-assistant/id6745137844',
     icon: '/apps/chart-ai-icon.webp',
     about:
