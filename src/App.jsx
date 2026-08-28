@@ -14,7 +14,7 @@ import Loader from './components/Loader'
 import { gsap } from './lib/gsap'
 import { applyTheme, readTheme } from './lib/theme'
 
-const SECTIONS = ['info', 'work', 'life', 'experience', 'contact']
+const SECTIONS = ['info', 'work', 'experience', 'life', 'contact']
 
 export default function App() {
   const [tab, setTab] = useState('info')
@@ -65,11 +65,11 @@ export default function App() {
       gsap.to('.intro', { y: 0, opacity: 1, duration: 0.8, delay: 0.06, ease: 'expo.out' })
       gsap.to('.logos', { y: 0, opacity: 1, duration: 0.7, delay: 0.12, ease: 'expo.out' })
       gsap.to('.work', { y: 0, opacity: 1, duration: 0.75, delay: 0.16, ease: 'expo.out' })
-      gsap.to('.life', { y: 0, opacity: 1, duration: 0.7, delay: 0.2, ease: 'expo.out' })
-      gsap.to('.experience', { y: 0, opacity: 1, duration: 0.75, delay: 0.24, ease: 'expo.out' })
-      gsap.to('.tweet', { y: 0, opacity: 1, duration: 0.7, delay: 0.27, ease: 'expo.out' })
-      gsap.to('.build', { y: 0, opacity: 1, duration: 0.7, delay: 0.3, ease: 'expo.out' })
-      gsap.to('.foot', { y: 0, opacity: 1, duration: 0.65, delay: 0.33, ease: 'expo.out' })
+      gsap.to('.experience', { y: 0, opacity: 1, duration: 0.75, delay: 0.2, ease: 'expo.out' })
+      gsap.to('.build', { y: 0, opacity: 1, duration: 0.7, delay: 0.24, ease: 'expo.out' })
+      gsap.to('.tweet', { y: 0, opacity: 1, duration: 0.7, delay: 0.28, ease: 'expo.out' })
+      gsap.to('.life', { y: 0, opacity: 1, duration: 0.7, delay: 0.31, ease: 'expo.out' })
+      gsap.to('.foot', { y: 0, opacity: 1, duration: 0.65, delay: 0.34, ease: 'expo.out' })
     },
     { scope: root, dependencies: [boot] },
   )
@@ -108,10 +108,10 @@ export default function App() {
         <Intro ready={!boot} />
         <Logos />
         <WorkList onOpen={setApp} />
-        <Life ready={!boot} />
         <Experience />
-        <Tweet />
         <Build />
+        <Tweet />
+        <Life ready={!boot} />
         <FooterCard />
       </div>
       <ProjectDetail app={app} onClose={() => setApp(null)} />

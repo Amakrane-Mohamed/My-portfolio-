@@ -7,8 +7,8 @@ import { gsap } from '../lib/gsap'
 const TABS = [
   { id: 'info', label: 'Info' },
   { id: 'work', label: 'Work' },
-  { id: 'life', label: 'Life' },
   { id: 'experience', label: 'Experience' },
+  { id: 'life', label: 'Life' },
   { id: 'contact', label: 'Contact' },
 ]
 
