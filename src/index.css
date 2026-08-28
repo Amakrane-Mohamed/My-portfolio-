@@ -1749,36 +1749,10 @@ a {
   margin: 0;
   padding: 0;
   border-radius: 0;
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: #111;
   overflow: hidden;
   will-change: opacity;
-}
-
-.loader.is-leaving {
-  background: #fff;
-}
-
-.loader-fill {
-  position: absolute;
-  inset: -2px 0;
-  width: auto;
-  height: auto;
-  background: #fff;
-  transform-origin: 50% 100%;
-  will-change: transform;
-  pointer-events: none;
-}
-
-.loader-center {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  mix-blend-mode: difference;
-  color: #fff;
 }
 
 .loader-count {
@@ -1788,15 +1762,6 @@ a {
   letter-spacing: -0.06em;
   line-height: 1;
   font-variant-numeric: tabular-nums;
-  user-select: none;
-}
-
-.loader-role {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
   user-select: none;
 }
 
