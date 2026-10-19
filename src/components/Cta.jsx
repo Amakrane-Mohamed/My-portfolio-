@@ -18,18 +18,18 @@ export default function Cta({ open, onContact }) {
           exit={reduced ? { opacity: 0 } : { y: 24, opacity: 0 }}
           transition={spring}
         >
-          <div className="cta-bar" role="region" aria-label="Open to work">
-            <p className="cta-copy">Open to work</p>
+          <div className="cta-bar" role="region" aria-label="Hello">
+            <p className="cta-copy">Hello</p>
             <div className="cta-actions">
               <a
                 className="cta-secondary"
                 href={PROFILE.resume}
                 download="Mohamed_Amakrane_Resume.pdf"
               >
-                CV
+                Résumé
               </a>
               <button type="button" className="cta-primary" onClick={onContact}>
-                Contact
+                Email
               </button>
             </div>
           </div>

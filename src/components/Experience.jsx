@@ -4,7 +4,7 @@ export default function Experience() {
   return (
     <section className="card experience" id="experience" aria-label="Experience">
       <h2 className="experience-title">Experience</h2>
-      <p className="experience-lead">ABDC now. Med You in before that.</p>
+      <p className="experience-lead">REBORN now. ABDC before that. Med You in first.</p>
       <div className="experience-grid">
         {EXPERIENCE.map((job) => (
           <article className="experience-item" key={job.id}>

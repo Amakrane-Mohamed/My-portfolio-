@@ -26,11 +26,23 @@ export const QUOTE = {
 
 export const EXPERIENCE = [
   {
+    id: 'reborn',
+    role: 'Flutter Developer',
+    company: 'REBORN sportstech',
+    type: 'Contract',
+    dates: 'Oct 2026 to now',
+    place: 'Remote, Casablanca',
+    logo: '/experience/reborn.jpg',
+    logoBg: '#000',
+    text: 'Every session measured. Every player visible. I build the Flutter app at REBORN.',
+    stack: ['Flutter', 'Dart'],
+  },
+  {
     id: 'abdc',
     role: 'Mobile Apps Developer',
     company: 'ABDC',
     type: 'Full-time',
-    dates: 'May 2025 to now',
+    dates: 'May 2025 to Oct 2026',
     place: 'Remote, Dubai',
     logo: '/experience/abdc.jpg',
     logoBg: '#111',
